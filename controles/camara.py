@@ -47,10 +47,10 @@ class Camara(QWidget, Ui_Camara):
         msgBox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         res = msgBox.exec_()
 
-        if res == True:
-            eliminar_usuario(self._id)
+        if res == QMessageBox.Yes:
+            eliminar_usuario(self.id)
             from controles.inicio import Crear_usuario
-            window = Crear_usuario(self)
+            window = Crear_usuario()
             window.show()
             self.hide()
 

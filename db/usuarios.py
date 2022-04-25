@@ -48,8 +48,8 @@ def actualizar(_id,data):
 
 def eliminar_usuario(_id):
     conn = create_connect()
+    print('entre')
     sql = f"DELETE FROM user WHERE user_id = {_id}"
-
 
     try:
         cur = conn.cursor()
