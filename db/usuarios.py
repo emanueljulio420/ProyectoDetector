@@ -1,5 +1,4 @@
 import imp
-from re import T
 import sqlite3
 from sqlite3 import Error
 from .conneccion import create_connect

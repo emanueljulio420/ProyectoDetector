@@ -1,6 +1,7 @@
 from PySide2.QtWidgets import QWidget, QMessageBox
-from PySide2.QtCore import Qt, QPropertyAnimation, QEasingCurve
+from PySide2.QtCore import Qt 
 from PySide2 import QtCore
+from numpy import append
 from ui_python.Ui_camara import Ui_Camara
 from db.usuarios import eliminar_usuario
 
@@ -15,42 +16,36 @@ class Camara(QWidget, Ui_Camara):
 
         self.eliminarButton.clicked.connect(self.eliminar)
         self.actualizarButton.clicked.connect(self.actualizar)
-        self.usuarioButton.clicked.connect(self.abrir_menu)
-
-    def abrir_menu(self):
-        if True:
-            width = self.frame_lateral.width()
-            normal = 0
-            if width == 0:
-                extender = 200
-            else:
-                extender = normal
-            
-            animacion = QPropertyAnimation(self.frame_lateral, b'minimunWidth')
-            animacion.setDirection(350)
-            animacion.setStartValue(width)
-            animacion.setEndValue(extender)
-            animacion.setEasingCurve(QtCore, QEasingCurve.InOutQuart)
-            animacion.start()
-        print('monda')
+        self.cerrarButton.clicked.connect(self.cerrar_secion)
 
     def actualizar(self):
         from controles.actualizar import Actualizar
-        window = Actualizar(self._id,self)
+        window = Actualizar(self.id,self)
         window.show()
 
     def eliminar(self):
         msgBox = QMessageBox()
-        msgBox.setIcon(QMessageBox.Information)
-        msgBox.setText("Usuario actualizado correctamente")
+        msgBox.setIcon(QMessageBox.Warning)
+        msgBox.setText("Seguro de eliminar el usuario")
         msgBox.setWindowTitle("Informacion")
         msgBox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         res = msgBox.exec_()
 
         if res == QMessageBox.Yes:
             eliminar_usuario(self.id)
+            from PySide2.QtWidgets import QWidget
+            from ui_python.Ui_crear_usuario import Ui_Crae_usuario
             from controles.inicio import Crear_usuario
             window = Crear_usuario()
             window.show()
+
             self.hide()
+            
+    def cerrar_secion(self):
+        from controles.inicio import Crear_usuario
+        print('entre')
+        window = Crear_usuario(self)
+        window.show()
+        
+        pass
 

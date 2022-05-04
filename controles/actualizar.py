@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import QWidget, QMessageBox
+from PySide2.QtWidgets import QWidget, QMessageBox, QFileDialog
 from PySide2.QtCore import Qt
 from ui_python.Ui_actualizar import Ui_Form
 from db.usuarios import actualizar
@@ -14,6 +14,7 @@ class Actualizar(QWidget, Ui_Form):
 
         self.acepButton.clicked.connect(self.cambiar_datos)
         self.cancelButton_2.clicked.connect(self.cancelar)
+        self.fotoButton.clicked.connect(self.seleccionar_foto)
     
     def cambiar_datos(self):
         nombre = self.nombreEdit.text()
@@ -28,7 +29,10 @@ class Actualizar(QWidget, Ui_Form):
             msgBox.setText("Usuario actualizado correctamente")
             msgBox.setWindowTitle("Informacion")
             msgBox.setStandardButtons(QMessageBox.Ok)
-            msgBox.exec_()
+            msgBox.show()
+            
+
+
             self.limpiar()
             self.hide()
 
@@ -77,3 +81,9 @@ class Actualizar(QWidget, Ui_Form):
     def limpiar(self):
         self.nombreEdit.clear()
         self.correoEdit.clear()
+
+    def seleccionar_foto(self):
+        file_path = QFileDialog.getOpenFileName()[0]
+        self.pathEdit.setText(file_path)
+        self.hide()
+        

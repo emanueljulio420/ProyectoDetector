@@ -4,7 +4,7 @@ from db.usuarios import new_usuario, buscar_nombre, buscar_correo, buscar_id
 
 class Crear_usuario(QWidget, Ui_Crae_usuario):
 
-    def __init__(self):
+    def __init__(self,parent = None):
         super().__init__()
 
         self.setupUi(self)
