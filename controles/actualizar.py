@@ -1,3 +1,4 @@
+import shutil
 from PySide2.QtWidgets import QWidget, QMessageBox, QFileDialog
 from PySide2.QtCore import Qt
 from ui_python.Ui_actualizar import Ui_Form
@@ -19,23 +20,12 @@ class Actualizar(QWidget, Ui_Form):
     def cambiar_datos(self):
         nombre = self.nombreEdit.text()
         correo = self.correoEdit.text()
-
-        data = (nombre,correo)
+        path = self.pathEdit.text()
 
         if self.verificar_espacios():
-            actualizar(self._id,data)
-            msgBox = QMessageBox()
-            msgBox.setIcon(QMessageBox.Information)
-            msgBox.setText("Usuario actualizado correctamente")
-            msgBox.setWindowTitle("Informacion")
-            msgBox.setStandardButtons(QMessageBox.Ok)
-            msgBox.show()
-            
-
-
-            self.limpiar()
-            self.hide()
-
+            nueva_foto = shutil.copy(path, 'Fotos_usuarios')
+            self.pathEdit.setText(nueva_foto)
+    
     def cancelar(self):
         self.limpiar()
         self.hide()
@@ -43,6 +33,7 @@ class Actualizar(QWidget, Ui_Form):
     def verificar_espacios(self):
         nombre = self.nombreEdit.text()
         correo = self.correoEdit.text()
+        path = self.pathEdit.text()
 
         errores = 0
 
@@ -55,6 +46,15 @@ class Actualizar(QWidget, Ui_Form):
             msgBox.exec_()
             errores += 1
         if correo == "":
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Warning)
+            msgBox.setText("Correo obligatorio")
+            msgBox.setWindowTitle("Error")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+            msgBox.exec_()
+            errores += 1
+
+        if path == "":
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Warning)
             msgBox.setText("Correo obligatorio")
@@ -76,6 +76,7 @@ class Actualizar(QWidget, Ui_Form):
                 errores += 1
 
         if errores == 0 :
+
             return True
 
     def limpiar(self):
@@ -84,6 +85,5 @@ class Actualizar(QWidget, Ui_Form):
 
     def seleccionar_foto(self):
         file_path = QFileDialog.getOpenFileName()[0]
+        print(file_path)
         self.pathEdit.setText(file_path)
-        self.hide()
-        

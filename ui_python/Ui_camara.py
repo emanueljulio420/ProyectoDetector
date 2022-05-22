@@ -173,21 +173,13 @@ class Ui_Camara(object):
 
         self.horizontalLayout.addWidget(self.frame_lateral)
 
-        self.camaraframe = QFrame(self.frame)
-        self.camaraframe.setObjectName(u"camaraframe")
-        self.camaraframe.setFrameShape(QFrame.StyledPanel)
-        self.camaraframe.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.camaraframe)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.mondagraphicsView = QGraphicsView(self.camaraframe)
-        self.mondagraphicsView.setObjectName(u"mondagraphicsView")
+        self.dockWidget = QDockWidget(self.frame)
+        self.dockWidget.setObjectName(u"dockWidget")
+        self.dockWidgetContents = QWidget()
+        self.dockWidgetContents.setObjectName(u"dockWidgetContents")
+        self.dockWidget.setWidget(self.dockWidgetContents)
 
-        self.verticalLayout_2.addWidget(self.mondagraphicsView)
-
-
-        self.horizontalLayout.addWidget(self.camaraframe)
+        self.horizontalLayout.addWidget(self.dockWidget)
 
 
         self.verticalLayout.addWidget(self.frame)

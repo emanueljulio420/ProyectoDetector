@@ -120,9 +120,6 @@
              </widget>
             </item>
             <item>
-             <widget class="QLCDNumber" name="lcdNumber"/>
-            </item>
-            <item>
              <widget class="QLabel" name="horaslabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">

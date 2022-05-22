@@ -1,8 +1,5 @@
-import time
 from PySide2.QtWidgets import QWidget, QMessageBox
 from PySide2.QtCore import Qt 
-from PySide2 import QtCore
-from numpy import append
 from ui_python.Ui_camara import Ui_Camara
 from db.usuarios import eliminar_usuario
 
@@ -14,20 +11,20 @@ class Camara(QWidget, Ui_Camara):
         super().__init__(parent)
         self.setupUi(self)
         self.setWindowFlag(Qt.Window)
-
-        self.iniciarButton.clicked.connect(self.comenzar_conometro)
+        
+        self.iniciarButton.clicked.connect(self.comenzar_camara)
         self.eliminarButton.clicked.connect(self.eliminar)
         self.actualizarButton.clicked.connect(self.actualizar)
         self.cerrarButton.clicked.connect(self.cerrar_secion)
     
-    def comenzar_conometro(self):
+    def comenzar_camara(self):
         import cv2
         import mediapipe as mp
         import os
 
         #------- Declaranos el detector -------
         nombre = 'Ema_Sintapabocas'
-        direccion = 'C:/Users/Emanuel Julio Lemos/Desktop/Detecror/fotos'
+        direccion = 'C:'
         carpeta = direccion + '/' + nombre
 
         if not os.path.exists(carpeta):
@@ -56,14 +53,14 @@ class Camara(QWidget, Ui_Camara):
                     for rostro in resutado.detections:
                         dibujo.draw_detection(frame, rostro)
                 
-                
-                # cv2.imshow('self.camaraframe', frame)
+                cv2.imshow(self.camaraframe, frame)
 
                 tecla = cv2.waitKey(1)
-                if tecla == 112 or count > 300:
+                if count > 300:
                     break 
 
         cap.release()
+        
 
     def actualizar(self):
         from controles.actualizar import Actualizar
