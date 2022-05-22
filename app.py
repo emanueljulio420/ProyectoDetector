@@ -6,7 +6,5 @@ if __name__ == '__main__':
     app = QApplication()
     window = Crear_usuario()
     window.show()
-    
-
     app.exec_()
 
