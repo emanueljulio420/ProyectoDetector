@@ -4,7 +4,7 @@ import os
 
 #------- Declaranos el detector -------
 nombre = 'Ema_Sintapabocas'
-direccion = 'C:\Users\Jorge Andres Julio L\Desktop\ProyectoDetector'
+direccion = 'C:/Users/Jorge Andres Julio L/Desktop/ProyectoDetector'
 carpeta = direccion + '/' + nombre
 
 if not os.path.exists(carpeta):
