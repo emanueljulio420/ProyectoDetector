@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Users\Emanuel Julio Lemos\Desktop\ProyectoDetector\venv
+=======
+set VIRTUAL_ENV=C:\Users\Jorge Andres Julio L\Desktop\ProyectoDetector\venv
+>>>>>>> 9d2232e185bf209aab7c0ac3e03d3b24616d3d0a
 
 if not defined PROMPT set PROMPT=$P$G
 
@@ -25,7 +29,10 @@ if defined _OLD_VIRTUAL_PATH set PATH=%_OLD_VIRTUAL_PATH%
 if not defined _OLD_VIRTUAL_PATH set _OLD_VIRTUAL_PATH=%PATH%
 
 set PATH=%VIRTUAL_ENV%\Scripts;%PATH%
+<<<<<<< HEAD
 set VIRTUAL_ENV_PROMPT=(venv) 
+=======
+>>>>>>> 9d2232e185bf209aab7c0ac3e03d3b24616d3d0a
 
 :END
 if defined _OLD_CODEPAGE (

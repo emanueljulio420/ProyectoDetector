@@ -245,7 +245,7 @@ class Camara(QWidget, Ui_Camara):
                 cv2.imshow('monda', frame)
 
                 tecla = cv2.waitKey(1)
-                if tecla == 112 or count > 300:
+                if count > 300:
                     break 
 
         cap.release()
