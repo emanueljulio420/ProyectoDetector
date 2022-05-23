@@ -113,3 +113,19 @@ def buscar_id(correo):
         if conn:
             cur.close()
             conn.close()
+
+def nombre_id(id):
+    conn = create_connect()
+    sql = f"SELECT nombre FROM user WHERE user_id = {id}"
+    try:
+        cur = conn.cursor()
+        cur.execute(sql)
+        coreex = cur.fetchall()
+        conn.commit()
+        return coreex
+    except Error as e:
+        print("Error el curcar correo:" + str(e))
+    finally:
+        if conn:
+            cur.close()
+            conn.close()

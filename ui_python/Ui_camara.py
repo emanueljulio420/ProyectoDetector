@@ -52,7 +52,7 @@ class Ui_Camara(object):
         self.usuarioButton.setSizePolicy(sizePolicy1)
         self.usuarioButton.setCursor(QCursor(Qt.PointingHandCursor))
         icon = QIcon()
-        icon.addFile(u"../imagenes/mascarilla-medica (1).png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"imagenes/mascarilla-medica (1).png", QSize(), QIcon.Normal, QIcon.Off)
         self.usuarioButton.setIcon(icon)
         self.usuarioButton.setIconSize(QSize(80, 80))
 
@@ -78,20 +78,6 @@ class Ui_Camara(object):
         self.horaslabel.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_2.addWidget(self.horaslabel)
-
-        self.minutoslabel = QLabel(self.frame_5)
-        self.minutoslabel.setObjectName(u"minutoslabel")
-        sizePolicy1.setHeightForWidth(self.minutoslabel.sizePolicy().hasHeightForWidth())
-        self.minutoslabel.setSizePolicy(sizePolicy1)
-
-        self.horizontalLayout_2.addWidget(self.minutoslabel)
-
-        self.segundoslabel = QLabel(self.frame_5)
-        self.segundoslabel.setObjectName(u"segundoslabel")
-        sizePolicy1.setHeightForWidth(self.segundoslabel.sizePolicy().hasHeightForWidth())
-        self.segundoslabel.setSizePolicy(sizePolicy1)
-
-        self.horizontalLayout_2.addWidget(self.segundoslabel)
 
 
         self.horizontalLayout_3.addWidget(self.frame_5)
@@ -126,37 +112,42 @@ class Ui_Camara(object):
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.actualizarButton = QPushButton(self.frame_lateral)
+        self.actualizarButton.setObjectName(u"actualizarButton")
+        sizePolicy2.setHeightForWidth(self.actualizarButton.sizePolicy().hasHeightForWidth())
+        self.actualizarButton.setSizePolicy(sizePolicy2)
+        self.actualizarButton.setMinimumSize(QSize(170, 60))
+        icon1 = QIcon()
+        icon1.addFile(u"imagenes/recargar.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actualizarButton.setIcon(icon1)
+        self.actualizarButton.setIconSize(QSize(50, 50))
+
+        self.verticalLayout_4.addWidget(self.actualizarButton, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+
         self.eliminarButton = QPushButton(self.frame_lateral)
         self.eliminarButton.setObjectName(u"eliminarButton")
         self.eliminarButton.setEnabled(True)
         sizePolicy2.setHeightForWidth(self.eliminarButton.sizePolicy().hasHeightForWidth())
         self.eliminarButton.setSizePolicy(sizePolicy2)
         self.eliminarButton.setMinimumSize(QSize(170, 60))
-        icon1 = QIcon()
-        icon1.addFile(u"../imagenes/eliminar.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.eliminarButton.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u"imagenes/eliminar.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.eliminarButton.setIcon(icon2)
         self.eliminarButton.setIconSize(QSize(50, 50))
 
         self.verticalLayout_4.addWidget(self.eliminarButton, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.actualizarButton = QPushButton(self.frame_lateral)
-        self.actualizarButton.setObjectName(u"actualizarButton")
-        sizePolicy2.setHeightForWidth(self.actualizarButton.sizePolicy().hasHeightForWidth())
-        self.actualizarButton.setSizePolicy(sizePolicy2)
-        self.actualizarButton.setMinimumSize(QSize(170, 60))
-        icon2 = QIcon()
-        icon2.addFile(u"../imagenes/recargar.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.actualizarButton.setIcon(icon2)
-        self.actualizarButton.setIconSize(QSize(50, 50))
-
-        self.verticalLayout_4.addWidget(self.actualizarButton, 0, Qt.AlignHCenter|Qt.AlignVCenter)
-
         self.iniciarButton = QPushButton(self.frame_lateral)
         self.iniciarButton.setObjectName(u"iniciarButton")
-        sizePolicy1.setHeightForWidth(self.iniciarButton.sizePolicy().hasHeightForWidth())
-        self.iniciarButton.setSizePolicy(sizePolicy1)
 
-        self.verticalLayout_4.addWidget(self.iniciarButton)
+        self.verticalLayout_4.addWidget(self.iniciarButton, 0, Qt.AlignHCenter)
+
+        self.entrenarButton = QPushButton(self.frame_lateral)
+        self.entrenarButton.setObjectName(u"entrenarButton")
+        sizePolicy1.setHeightForWidth(self.entrenarButton.sizePolicy().hasHeightForWidth())
+        self.entrenarButton.setSizePolicy(sizePolicy1)
+
+        self.verticalLayout_4.addWidget(self.entrenarButton)
 
         self.cerrarButton = QPushButton(self.frame_lateral)
         self.cerrarButton.setObjectName(u"cerrarButton")
@@ -164,7 +155,7 @@ class Ui_Camara(object):
         self.cerrarButton.setSizePolicy(sizePolicy2)
         self.cerrarButton.setMinimumSize(QSize(170, 60))
         icon3 = QIcon()
-        icon3.addFile(u"../imagenes/cerrar-sesion.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"imagenes/cerrar-sesion.png", QSize(), QIcon.Normal, QIcon.Off)
         self.cerrarButton.setIcon(icon3)
         self.cerrarButton.setIconSize(QSize(50, 50))
 
@@ -173,21 +164,12 @@ class Ui_Camara(object):
 
         self.horizontalLayout.addWidget(self.frame_lateral)
 
-        self.camaraframe = QFrame(self.frame)
-        self.camaraframe.setObjectName(u"camaraframe")
-        self.camaraframe.setFrameShape(QFrame.StyledPanel)
-        self.camaraframe.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.camaraframe)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.mondagraphicsView = QGraphicsView(self.camaraframe)
-        self.mondagraphicsView.setObjectName(u"mondagraphicsView")
+        self.frame_3 = QFrame(self.frame)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout_2.addWidget(self.mondagraphicsView)
-
-
-        self.horizontalLayout.addWidget(self.camaraframe)
+        self.horizontalLayout.addWidget(self.frame_3)
 
 
         self.verticalLayout.addWidget(self.frame)
@@ -206,8 +188,10 @@ class Ui_Camara(object):
         self.usuarioButton.setText(QCoreApplication.translate("Camara", u"Usuario", None))
         self.reiniciarButton.setText(QCoreApplication.translate("Camara", u"Reiniciar", None))
         self.horaslabel.setText("")
-        self.minutoslabel.setText("")
-        self.segundoslabel.setText("")
+#if QT_CONFIG(whatsthis)
+        self.actualizarButton.setWhatsThis(QCoreApplication.translate("Camara", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+        self.actualizarButton.setText(QCoreApplication.translate("Camara", u"  Actualizar usuario", None))
 #if QT_CONFIG(tooltip)
         self.eliminarButton.setToolTip(QCoreApplication.translate("Camara", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
@@ -215,11 +199,11 @@ class Ui_Camara(object):
 #if QT_CONFIG(shortcut)
         self.eliminarButton.setShortcut("")
 #endif // QT_CONFIG(shortcut)
+        self.iniciarButton.setText(QCoreApplication.translate("Camara", u"Iniciar reconocedor", None))
 #if QT_CONFIG(whatsthis)
-        self.actualizarButton.setWhatsThis(QCoreApplication.translate("Camara", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
+        self.entrenarButton.setWhatsThis(QCoreApplication.translate("Camara", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
-        self.actualizarButton.setText(QCoreApplication.translate("Camara", u"  Actualizar usuario", None))
-        self.iniciarButton.setText(QCoreApplication.translate("Camara", u"Inicirar", None))
+        self.entrenarButton.setText(QCoreApplication.translate("Camara", u"Entrenar IA", None))
         self.cerrarButton.setText(QCoreApplication.translate("Camara", u"  Cerrar secion", None))
     # retranslateUi
 

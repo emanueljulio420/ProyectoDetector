@@ -84,7 +84,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>../imagenes/mascarilla-medica (1).png</normaloff>../imagenes/mascarilla-medica (1).png</iconset>
+             <normaloff>imagenes/mascarilla-medica (1).png</normaloff>imagenes/mascarilla-medica (1).png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -120,36 +120,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLCDNumber" name="lcdNumber"/>
-            </item>
-            <item>
              <widget class="QLabel" name="horaslabel">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="minutoslabel">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="segundoslabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -240,6 +211,38 @@
           <number>0</number>
          </property>
          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+          <widget class="QPushButton" name="actualizarButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>170</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>  Actualizar usuario</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>imagenes/recargar.png</normaloff>imagenes/recargar.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
           <widget class="QPushButton" name="eliminarButton">
            <property name="enabled">
             <bool>true</bool>
@@ -264,7 +267,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>../imagenes/eliminar.png</normaloff>../imagenes/eliminar.png</iconset>
+             <normaloff>imagenes/eliminar.png</normaloff>imagenes/eliminar.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -277,48 +280,26 @@
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-          <widget class="QPushButton" name="actualizarButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>170</width>
-             <height>60</height>
-            </size>
-           </property>
-           <property name="whatsThis">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QPushButton" name="iniciarButton">
            <property name="text">
-            <string>  Actualizar usuario</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../imagenes/recargar.png</normaloff>../imagenes/recargar.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>50</width>
-             <height>50</height>
-            </size>
+            <string>Iniciar reconocedor</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="iniciarButton">
+          <widget class="QPushButton" name="entrenarButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
-            <string>Inicirar</string>
+            <string>Entrenar IA</string>
            </property>
           </widget>
          </item>
@@ -341,7 +322,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>../imagenes/cerrar-sesion.png</normaloff>../imagenes/cerrar-sesion.png</iconset>
+             <normaloff>imagenes/cerrar-sesion.png</normaloff>imagenes/cerrar-sesion.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -355,8 +336,13 @@
        </widget>
       </item>
       <item>
-       <widget class="QDockWidget" name="dockWidget">
-        <widget class="QWidget" name="dockWidgetContents"/>
+       <widget class="QFrame" name="frame_3">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
        </widget>
       </item>
      </layout>
