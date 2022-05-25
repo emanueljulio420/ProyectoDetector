@@ -117,10 +117,13 @@ class Camara(QWidget, Ui_Camara):
 
             while True:
                 ret , frame = cap.read()
+                copia = frame.copy()
 
-                frame = cv2.flip(frame, 1)
+                frame = cv2.flip(copia, 1)
+                
 
                 rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                copia2 = rgb.copy()
 
                 resutado = rostros.process(rgb)
 
@@ -144,21 +147,24 @@ class Camara(QWidget, Ui_Camara):
                         yf = yi + alto
 
                         # Estrraccion de pixelesp y establecer tamaño de foto
-                        cara = frame[yi:yf, xi:xf]
+                        cara = copia2[yi:yf, xi:xf]
                         cara = cv2.resize(cara, (150,200), interpolation=cv2.INTER_CUBIC)
+
                         cara = cv2.cvtColor(cara, cv2.COLOR_BGR2GRAY)
                         # predicir
                         prediccion = modelo.predict(cara)
 
                         if prediccion[0] == 0:
+                            print(prediccion[0])
                             cv2.putText(frame, '{}'.format(etiquetas[0]), (xi, yi - 5), 1, 1.3, (0,0,255), 1, cv2.LINE_AA)
                             cv2.rectangle(frame, (xi, yi), (yi, yf), (0, 0, 255), 2)
                         elif prediccion[0] == 1:
-                            cv2.putText(frame, '{}'.format(etiquetas[0]), (xi, yi - 5), 1, 1.3, (255, 0,0), 1, cv2.LINE_AA)
-                            cv2.rectangle(frame, (xi, yi), (yi, yf), (255, 0, 0), 2)
+                            print(prediccion[0])
+                            cv2.putText(frame, '{}'.format(etiquetas[1]), (xi, yi - 5), 1, 1.3, (100, 255, 0), 1, cv2.LINE_AA)
+                            cv2.rectangle(frame, (xi, yi), (yi, yf), (100, 255, 0), 2)
                         
 
-                cv2.imshow('monda', frame)
+                cv2.imshow('Fotos con tapabocas', frame)
 
                 tecla = cv2.waitKey(1)
                 if tecla == 112:
@@ -259,7 +265,7 @@ class Camara(QWidget, Ui_Camara):
                         cv2.imwrite(carpeta + '/rostro_{}.jpg'.format(count), cara)
                         count = count + 1
 
-                cv2.imshow('monda', frame)
+                cv2.imshow('Fotos con tapabocas', frame)
 
                 tecla = cv2.waitKey(1)
                 if count > 300:
@@ -327,7 +333,7 @@ class Camara(QWidget, Ui_Camara):
                         cv2.imwrite(carpeta + '/rostro_{}.jpg'.format(count), cara)
                         count = count + 1
 
-                cv2.imshow('monda', frame)
+                cv2.imshow('Fotos sin tapabocas', frame)
 
                 tecla = cv2.waitKey(1)
                 if tecla == 112 or count > 300:
