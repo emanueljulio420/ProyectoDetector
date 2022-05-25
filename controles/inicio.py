@@ -55,6 +55,8 @@ class Crear_usuario(QWidget, Ui_Crae_usuario):
         self.nombreEdit.clear()
         self.correoEdit_2.clear()
 
+    # ------------------ Iniciar sesion -------------------
+
     def iniciar_secion(self):
         nombre = self.nombreEdit.toPlainText()
         correo = self.correoEdit_2.toPlainText()
@@ -111,6 +113,8 @@ class Crear_usuario(QWidget, Ui_Crae_usuario):
                 msgBox.setWindowTitle("Error")
                 msgBox.setStandardButtons(QMessageBox.Ok)
                 msgBox.exec_()
+
+    # ------------------ Crear usuario nuevo -------------------
 
     def crear_usuario(self):
         nombre = self.nombreEdit.toPlainText()

@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Reconocedor</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
    <property name="spacing">
@@ -280,26 +280,79 @@
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignHCenter">
+         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
           <widget class="QPushButton" name="iniciarButton">
-           <property name="text">
-            <string>Iniciar reconocedor</string>
+           <property name="enabled">
+            <bool>true</bool>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="entrenarButton">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="whatsThis">
+           <property name="minimumSize">
+            <size>
+             <width>170</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Entrenar IA</string>
+            <string> Iniciar reconocedor</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>imagenes/active_audio_start_player_button_music_play_icon_219332.png</normaloff>imagenes/active_audio_start_player_button_music_play_icon_219332.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+          <widget class="QPushButton" name="entrenarButton">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>170</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>  Entrenar IA</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>imagenes/athletic_exercise_game_gym_sport_training_icon_127170.png</normaloff>imagenes/athletic_exercise_game_gym_sport_training_icon_127170.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string/>
            </property>
           </widget>
          </item>

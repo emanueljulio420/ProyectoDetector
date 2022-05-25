@@ -3,7 +3,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 from PySide2.QtWidgets import * 
-from PySide2 import QtCore, QtGui 
 from PySide2.QtGui import * 
 from PySide2.QtCore import * 
 from PySide2.QtWidgets import QWidget, QMessageBox
@@ -21,6 +20,11 @@ class Camara(QWidget, Ui_Camara):
         super().__init__(parent)
         self.setupUi(self)
         self.nombre = nombre_id(self.id)[0][0]
+        self.usuarioButton.setText(f'{self.nombre}')
+        self.setWindowFlag(Qt.Window)
+        self.count = 0
+        self.flag = False
+        self.cronometro()
     
         direccion = 'C:/Users/Emanuel Julio Lemos/Desktop/ProyectoDetector/fotos'
         carpeta = direccion + '/' + self.nombre
@@ -29,9 +33,19 @@ class Camara(QWidget, Ui_Camara):
             print('carpeta creada')
             os.makedirs(carpeta)
 
-        self.setWindowFlag(Qt.Window)
-        self.count = 0
-        self.flag = False
+        
+
+        self.reiniciarButton.clicked.connect(self.reiniciar_cronometro)
+        self.iniciarButton.clicked.connect(self.identificar)
+        self.entrenarButton.clicked.connect(self.entrenar_inteligencia)
+        self.eliminarButton.clicked.connect(self.eliminar)
+        self.actualizarButton.clicked.connect(self.actualizar)
+        self.cerrarButton.clicked.connect(self.cerrar_secion)
+
+    # ------------------ Comenzar cronometro -------------------
+
+    def cronometro(self):
+
         self.horaslabel.setGeometry(75, 100, 250, 70) 
         self.horaslabel.setStyleSheet("border : 4px solid black;")       
         self.horaslabel.setText(str(self.count)) 
@@ -46,13 +60,6 @@ class Camara(QWidget, Ui_Camara):
 
         self.flag = True
 
-        self.reiniciarButton.clicked.connect(self.reiniciar_cronometro)
-        self.iniciarButton.clicked.connect(self.identificar)
-        self.entrenarButton.clicked.connect(self.entrenar_inteligencia)
-        self.eliminarButton.clicked.connect(self.eliminar)
-        self.actualizarButton.clicked.connect(self.actualizar)
-        self.cerrarButton.clicked.connect(self.cerrar_secion)
-
     def showtime(self):
         if self.flag: 
       
@@ -62,10 +69,14 @@ class Camara(QWidget, Ui_Camara):
         
         self.horaslabel.setText(text)
 
+    # ------------------ Reiniciar cronometro -------------------
+
     def reiniciar_cronometro(self):
         self.count = 0
   
-        self.label.setText(str(self.count))
+        self.horaslabel.setText(str(self.count))
+
+    # ------------------ Entrenar ia -------------------
  
     def entrenar_inteligencia(self):
         print('Pongase el tapabocas')
@@ -82,6 +93,8 @@ class Camara(QWidget, Ui_Camara):
         time.sleep(10)
 
         self.entenar()
+    
+    # ------------------ Identificar si tiene o no el tapabocas -------------------
     
     def identificar(self):
         direccion = f'C:/Users/Emanuel Julio Lemos/Desktop/ProyectoDetector/fotos/{self.nombre}'
@@ -153,6 +166,8 @@ class Camara(QWidget, Ui_Camara):
 
         cap.release()
 
+    # ------------------ Entrenamiento del modelo -------------------
+
     def entenar(self):
 
         direccion = f'C:/Users/Emanuel Julio Lemos/Desktop/ProyectoDetector/fotos/{self.nombre}'
@@ -184,6 +199,8 @@ class Camara(QWidget, Ui_Camara):
 
         modelo.write('Modelo.xml')
         print('modelo entrenado')
+
+    # ------------------ Toma fotos de la persona con tapabocas -------------------
 
     def tomar_fotos_tapabocas(self):
 
@@ -251,6 +268,8 @@ class Camara(QWidget, Ui_Camara):
         cap.release()
         cv2.destroyAllWindows()
 
+    # ------------------ Toma fotos de la persona sin tapabocas -------------------
+
     def tomar_fotos_sintapabocas(self):
 
         #------- Declaranos el detector -------
@@ -317,10 +336,14 @@ class Camara(QWidget, Ui_Camara):
         cap.release()
         cv2.destroyAllWindows()
 
+    # ------------------ Actualiza la informacion del usuario -------------------
+
     def actualizar(self):
         from controles.actualizar import Actualizar
         window = Actualizar(self.id,self)
         window.show()
+
+    # ------------------ Elimina el usuario -------------------
 
     def eliminar(self):
         msgBox = QMessageBox()
@@ -339,10 +362,13 @@ class Camara(QWidget, Ui_Camara):
             window.show()
 
             self.hide()
+
+    # ------------------ Cierra la sesion -------------------
             
     def cerrar_secion(self):
         from controles.inicio import Crear_usuario
         print('entre')
         window = Crear_usuario(self)
         window.show()
+        self.hide()
 
